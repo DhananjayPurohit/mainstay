@@ -85,6 +85,7 @@ func verifyStateNewAttestationToSignAttestation(t *testing.T, attestService *Att
 
 // verify AStateSignAttestation to AStatePreSendStore
 func verifyStateSignAttestationToPreSendStore(t *testing.T, attestService *AttestService) {
+	assert.Equal(t, AStatePreSendStore, attestService.state)
 	attestService.doAttestation()
 	assert.Equal(t, AStatePreSendStore, attestService.state)
 	assert.Equal(t, true, len(attestService.attestation.Tx.TxIn[0].SignatureScript) > 0)
